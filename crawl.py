@@ -16,9 +16,12 @@ if (len(sys.argv) > 2):
 if (len(sys.argv) > 3):
 	search = sys.argv[3]
 
+processed = []
+
 def searchURL(url, depth, search):
 	# only do http links
-	if url.startswith("http://"):
+	if (url.startswith("http://") and (not url in processed)):
+		processed.append(url)
 		url = url.replace("http://", "", 1)
 		
 		# split out the url into host and doc
@@ -52,5 +55,7 @@ def searchURL(url, depth, search):
 			# follow the links
 			if (depth > 0):
 				searchURL(href, depth-1, search)
+	else:
+		print "skipping "	+ url
 		
 searchURL(url, depth, search)

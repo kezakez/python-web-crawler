@@ -1,7 +1,6 @@
 A programming excercise. A web crawler written in python.
 
 TODO
-don't process a url already processed.
 the complex part.
 figure out how to do tests first.
 error handling.
