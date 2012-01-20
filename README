@@ -1,0 +1,46 @@
+A programming excercise. A web crawler written in python.
+
+TODO
+don't process a url already processed.
+the complex part.
+figure out how to do tests first.
+error handling.
+
+Thoughts
+It took 2 hours.
+I have never seen python before.
+python seems to make sense.
+finding the correct regex method was tricky.
+casting numbers to strings was annoying.
+
+Problem statement:
+Language: Python 
+Official site: http://python.org/ 
+Beginer's guide: http://wiki.python.org/moin/BeginnersGuide 
+Tutorial: http://docs.python.org/tutorial/ 
+ 
+App Category: Networking 
+DB: None 
+Simple part: 
+Create a web crawler app in python which, given a url seed, can crawl 
+through all links on the page and scan deep for a given level of 
+depth. While crawling the app should be able to return the url page 
+containing a specific search text. 
+Input: 
+1 - Url seed e.g. www.hackernews.com 
+2 - Depth e.g. 5 (this means go into links on a page till 5 levels) 
+3 - search text e.g. "python" 
+Output: 
+the list of url that contains the specified text 
+The Simple part is mandatory to be completed. 
+If you finish the simple part and are eager to take up something 
+challenging, then here's a little complex angle to the problem: 
+Complex part: 
+Write rules around the app for searching. 
+Rule 1: The return Url should contain a specific substring 
+Rule 2: Highlight in output if the url is amongst a long list of 
+blacklisted urls (about 10000 blacklisted urls) 
+Rule 3: Search for multiple search strings and rank Urls as per the 
+number of different search strings found and occurances of each search 
+string in the page 
+Rule 4: Rank as per level of the Url w.r.t. seed url 
