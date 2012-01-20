@@ -1,5 +1,12 @@
 A programming excercise. A web crawler written in python.
 
+Usage
+python --version
+Python 2.7.2+
+
+python crawl.py http://www.keza.net 2 JavaScript
+crawl.py [url] [depth] [search term]
+
 TODO
 the complex part.
 figure out how to do tests first.

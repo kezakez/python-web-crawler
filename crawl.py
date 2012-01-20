@@ -56,6 +56,6 @@ def searchURL(url, depth, search):
 			if (depth > 0):
 				searchURL(href, depth-1, search)
 	else:
-		print "skipping "	+ url
+		print "skipping " + url
 		
 searchURL(url, depth, search)
