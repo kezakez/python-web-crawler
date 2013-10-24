@@ -1,24 +1,10 @@
-import sys
 import httplib
 import re
+import argparse
 
-url = "http://www.hackernews.net"
-depth = 2
-search = "python"
 
-# get the parameters or use defaults
-if (len(sys.argv) > 1):
-	url = sys.argv[1]	
-
-if (len(sys.argv) > 2):
-	depth = int(sys.argv[2])
-
-if (len(sys.argv) > 3):
-	search = sys.argv[3]
-
-processed = []
-
-def searchURL(url, depth, search):
+def searchURL(url="http://www.hackernews.net", depth=2, search="python"):
+        processed = []
 	# only do http links
 	if (url.startswith("http://") and (not url in processed)):
 		processed.append(url)
@@ -57,5 +43,15 @@ def searchURL(url, depth, search):
 				searchURL(href, depth-1, search)
 	else:
 		print "skipping " + url
-		
-searchURL(url, depth, search)
+
+def main():
+    parser = argparse.ArgumentParser(description="python web crawler")
+    parser.add_argument('url',help='url to be crawled')
+    parser.add_argument('depth',type=int,help='depth levels which means go into links on a page till depth level')
+    parser.add_argument('search',help='search text')
+    args = parser.parse_args()
+    
+    searchURL(args.url, args.depth, args.search)
+    		
+if __name__== '__main__':
+    main()    
