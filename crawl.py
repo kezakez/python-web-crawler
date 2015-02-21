@@ -6,16 +6,15 @@ import argparse
 def searchURL(url="http://www.hackernews.net", depth=2, search="python"):
         processed = []
 	# only do http links
-	if (url.startswith("http://") and (not url in processed)):
+	if url.startswith("http://") and (not url in processed):
 		processed.append(url)
 		url = url.replace("http://", "", 1)
 		
 		# split out the url into host and doc
-		host = url
-		path = "/"
+		host, path = url, "/"
 
 		urlparts = url.split("/")
-		if (len(urlparts) > 1):
+		if len(urlparts) > 1:
 			host = urlparts[0]
 			path = url.replace(host, "", 1)
 
@@ -29,17 +28,17 @@ def searchURL(url="http://www.hackernews.net", depth=2, search="python"):
 		contents = res.read()
 		m = re.findall('href="(.*?)"', contents)
 		
-		if (search in contents):
+		if search in contents:
 			print "Found " + search + " at " + url
 
 		print str(depth) + ": processing " + str(len(m)) + " links"
 		for href in m:
 			# do relative urls
-			if (href.startswith("/")):
+			if href.startswith("/"):
 				href = "http://" + host + href
 
 			# follow the links
-			if (depth > 0):
+			if depth:
 				searchURL(href, depth-1, search)
 	else:
 		print "skipping " + url
